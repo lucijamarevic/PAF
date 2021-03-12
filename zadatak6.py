@@ -11,7 +11,7 @@ def nacrtaj_k_i_t(sx,sy,r,tx,ty):
         yi = sy + r*sin(rad)
         y.append(yi)
     plt.plot(x,y)
-    plt.plot(tx,ty)
+    plt.scatter(tx,ty,s=100, c="yellow")
     pitanje = input("Zelite li  graf odmah (odgovorite 'odmah') ili u pdf-u (odgovorite 'PDF')? ")
     if pitanje == "odmah":
         plt.show()
