@@ -77,8 +77,8 @@ def izracunaj_domet(v0,th,t):
         if yi >= 0:
             x.append(xi)
 
-    D = max(x)
-    print(f"Domet iznosi: {D}m.")
+    Domet = max(x)
+    print(f"Domet iznosi: {Domet}m.")
 
 def izracunaj_maks_brzinu(v0,th,t):
     g = 9.81
