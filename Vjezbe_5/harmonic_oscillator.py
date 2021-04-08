@@ -20,9 +20,21 @@ class HarmonicOscillator:
         self.v.append(self.vi)
         self.x.append(self.xi)
 
-    def oscillate(self,t):
-        n = t/self.dt
-        for i in range(round(n)):
+    def reset(self):
+        del self.m
+        del self.k
+        del self.ai
+        del self.vi
+        del self.xi
+        del self.dt
+        del self.ti
+        del self.t
+        del self.a
+        del self.v
+        del self.x
+
+    def oscillate(self, t):
+        while self.ti <= t:
             self.vi = self.vi + self.ai * self.dt
             self.xi = self.xi + self.vi * self.dt
             self.ai = (-self.k/self.m) * self.xi
@@ -30,7 +42,9 @@ class HarmonicOscillator:
             self.v.append(self.vi)
             self.x.append(self.xi)
             self.a.append(self.ai)
-            self.t.append(self.ti)      
+            self.t.append(self.ti)
+                
+        return self.x, self.t
 
     def plot_trajectory(self):
         plt.figure("Harmonic oscilator")
@@ -53,13 +67,29 @@ class HarmonicOscillator:
         plt.subplots_adjust(wspace = 0.4, hspace = 0.6)
         plt.show()
 
+    def analitic_x(self,t):
+        self.x = []
+        self.t = []
+        self.omega = math.sqrt(self.k/self.m)
+        self.fi = math.pi/2
+        self.ti = 0
+        while self.ti <= t:
+            xi = self.xi * math.sin(self.omega*self.ti + self.fi)
+            self.ti += self.dt
+            self.x.append(xi)
+            self.t.append(self.ti)
+            
+        return self.x, self.t
+
     def period(self):
+        t = self.dt
         while True:
-            self.oscillate(10)
-            if self.xi >= self.x0 - self.dt and self.xi <= self.x0 + self.dt:
+            self.oscillate(t)
+            if self.xi >= self.x0 - self.dt or self.xi <= self.x0 + self.dt:
+                t += self.dt
                 break
-        T = 2*self.ti
+        T = 2*t
         return T
 
     def period_analitic(self):
-        return 2*math.pi*math.sqrt(self.m)/math.sqrt(self.k)
+        return 2*math.pi*math.sqrt(self.m/self.k)
