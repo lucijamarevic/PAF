@@ -33,19 +33,25 @@ class HarmonicOscillator:
         del self.v
         del self.x
 
+    ## privatna metoda koji cini samo jedan mali pomak za vrijeme dt
+    def __move(self):      
+        self.vi = self.vi + self.ai * self.dt
+        self.xi = self.xi + self.vi * self.dt
+        self.ai = (-self.k/self.m) * self.xi
+        self.ti += self.dt
+        self.v.append(self.vi)
+        self.x.append(self.xi)
+        self.a.append(self.ai)
+        self.t.append(self.ti)
+
+    ## metoda koja racuna putanju za vrijeme koje korisnik unese
     def oscillate(self, t):
         while self.ti <= t:
-            self.vi = self.vi + self.ai * self.dt
-            self.xi = self.xi + self.vi * self.dt
-            self.ai = (-self.k/self.m) * self.xi
-            self.ti += self.dt
-            self.v.append(self.vi)
-            self.x.append(self.xi)
-            self.a.append(self.ai)
-            self.t.append(self.ti)
-                
+            self.__move()
+  
         return self.x, self.t
 
+    ## metoda koja crta graf
     def plot_trajectory(self):
         plt.figure("Harmonic oscilator")
         fig = plt.subplot()
@@ -67,6 +73,7 @@ class HarmonicOscillator:
         plt.subplots_adjust(wspace = 0.4, hspace = 0.6)
         plt.show()
 
+    ## metoda koja analiticki racuna putanju
     def analitic_x(self,t):
         self.x = []
         self.t = []
@@ -80,16 +87,21 @@ class HarmonicOscillator:
             self.t.append(self.ti)
             
         return self.x, self.t
-
+    
+    ## metoda koja numericki racuna period
     def period(self):
-        t = self.dt
-        while True:
-            self.oscillate(t)
-            if self.xi >= self.x0 - self.dt or self.xi <= self.x0 + self.dt:
-                t += self.dt
-                break
-        T = 2*t
+        while self.xi <= self.x0 - self.dt or self.xi >= self.x0 + self.dt :
+            ## ode je problem sta vec prvi x zadovoljava uvjet i ne znan kako to popravit,
+            ## probaoto cu ponovo sutra
+
+            #del self.x[0]    ovo ne funkcionira
+            #del self.t[0]
+            self.__move()
+            
+        print(self.x)
+        T = 2*self.ti
         return T
 
+    ## metoda koja analiticki racuna period
     def period_analitic(self):
         return 2*math.pi*math.sqrt(self.m/self.k)
