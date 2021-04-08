@@ -92,7 +92,7 @@ class HarmonicOscillator:
     def period(self):
         while self.xi <= self.x0 - self.dt or self.xi >= self.x0 + self.dt :
             ## ode je problem sta vec prvi x zadovoljava uvjet i ne znan kako to popravit,
-            ## probaoto cu ponovo sutra
+            ## probat cu ponovo sutra
 
             #del self.x[0]    ovo ne funkcionira
             #del self.t[0]
