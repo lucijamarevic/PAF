@@ -1,13 +1,14 @@
-import math
 import matplotlib.pyplot as plt
+import math
 
-class HarmonicOscilator:
+class HarmonicOscillator:
     def init(self,m,k,v0,A,dt):
         self.m = m
         self.k = k
         self.ai = (-k/m) * A 
         self.vi = v0
-        self.xi = A
+        self.x0 = A
+        self.xi = self.x0
         self.dt = dt
         self.ti = 0
         self.t = []
@@ -19,7 +20,7 @@ class HarmonicOscilator:
         self.v.append(self.vi)
         self.x.append(self.xi)
 
-    def oscilate(self,t):
+    def oscillate(self,t):
         n = t/self.dt
         for i in range(round(n)):
             self.vi = self.vi + self.ai * self.dt
@@ -29,7 +30,7 @@ class HarmonicOscilator:
             self.v.append(self.vi)
             self.x.append(self.xi)
             self.a.append(self.ai)
-            self.t.append(self.ti)
+            self.t.append(self.ti)      
 
     def plot_trajectory(self):
         plt.figure("Harmonic oscilator")
@@ -51,3 +52,14 @@ class HarmonicOscilator:
         plt.title("a-t graf")
         plt.subplots_adjust(wspace = 0.4, hspace = 0.6)
         plt.show()
+
+    def period(self):
+        while True:
+            self.oscillate(10)
+            if self.xi >= self.x0 - self.dt and self.xi <= self.x0 + self.dt:
+                break
+        T = 2*self.ti
+        return T
+
+    def period_analitic(self):
+        return 2*math.pi*math.sqrt(self.m)/math.sqrt(self.k)
