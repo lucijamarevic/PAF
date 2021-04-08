@@ -81,6 +81,7 @@ class HarmonicOscillator:
             
         return self.x, self.t
 
+    ## ovo ne valja, ali ne znan zasto
     def period(self):
         t = 0
         vi = self.vi
@@ -95,18 +96,21 @@ class HarmonicOscillator:
             x.append(xi)
             if xi >= self.x0 - self.dt/100 or xi <= self.x0 + self.dt/100:
                 break
-        print(x)
-        #T = 2*t
-        #return T
+        #print(x)
+        T = 2*t
+        return T
     
-    #def period(self):
-    #    while True:
-    #        self.oscillate(1)
-    #        if self.xi >= self.x0 - self.dt or self.xi <= self.x0 + self.dt:
-    #            break
-    #    print(self.x)
-    #    T = 2*self.ti
-    #    return T
+    ## ovo ne valja jer mi u ovoj verziji metoda oscillate racuna sve dok self.ti
+    ## ne dode do zadanog vremena (uvjet while self.ti <= t) pa ce u svakom pokusaju 
+    ## period ispasti 2*zadano vrijeme
+    def period(self):
+        while True:
+            self.oscillate(1)
+            if self.xi >= self.x0 - self.dt or self.xi <= self.x0 + self.dt:
+                break
+        print(self.x)
+        T = 2*self.ti
+        return T
 
     def period_analitic(self):
         return 2*math.pi*math.sqrt(self.m/self.k)
