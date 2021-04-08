@@ -8,8 +8,8 @@ def f1(x):
 def der_f1(x):
     return 15*x*x + 4*x - 3
 
-xlista, ylista = clc.derivative(f1,-2,2,0.1,2)
-x1_lista, y1_lista = clc.derivative(f1,-2,2,0.01,2)
+xlista, ylista = clc.derivative(f1,-2,2,0.1,2)     # two_step metoda
+x1_lista, y1_lista = clc.derivative(f1,-2,2,0.01,2)     # isto
 ya_lista = []
 for x in xlista:
     ya = der_f1(x)
@@ -30,8 +30,8 @@ def f2(x):
 def der_f2(x):
     return 4*math.cos(2*x) - 3*math.sin(x)
 
-xlista, ylista = clc.derivative(f2,-2,2,0.1)
-x1_lista, y1_lista = clc.derivative(f2,-2,2,0.01)
+xlista, ylista = clc.derivative(f2,-2,2,0.1)     # three_step metoda
+x1_lista, y1_lista = clc.derivative(f2,-2,2,0.01)     # isto
 ya_lista = []
 for x in xlista:
     ya = der_f2(x)
