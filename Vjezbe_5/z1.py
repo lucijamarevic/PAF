@@ -1,3 +1,4 @@
+## dodaj komentare za init funkciju
 import harmonic_oscillator as ho 
 import matplotlib.pyplot as plt
 

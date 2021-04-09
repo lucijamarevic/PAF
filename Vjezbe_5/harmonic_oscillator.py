@@ -51,7 +51,6 @@ class HarmonicOscillator:
   
         return self.x, self.t
 
-    ## metoda koja crta graf
     def plot_trajectory(self):
         plt.figure("Harmonic oscilator")
         fig = plt.subplot()
@@ -88,20 +87,15 @@ class HarmonicOscillator:
             
         return self.x, self.t
     
-    ## metoda koja numericki racuna period
+    #### radi, ali izbacuje krivi rezultat, sutra cu razmislit zasto
     def period(self):
-        while self.xi <= self.x0 - self.dt or self.xi >= self.x0 + self.dt :
-            ## ode je problem sta vec prvi x zadovoljava uvjet i ne znan kako to popravit,
-            ## probat cu ponovo sutra
-
-            #del self.x[0]    ovo ne funkcionira
-            #del self.t[0]
+        while True:
             self.__move()
-            
-        print(self.x)
-        T = 2*self.ti
+            if self.xi <= self.x0 + self.dt and self.xi >= self.x0 - self.dt:
+                T = 2*self.ti       
+                break
+
         return T
 
-    ## metoda koja analiticki racuna period
     def period_analitic(self):
         return 2*math.pi*math.sqrt(self.m/self.k)
