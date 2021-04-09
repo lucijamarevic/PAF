@@ -87,7 +87,7 @@ class HarmonicOscillator:
             
         return self.x, self.t
     
-    #### radi, ali izbacuje krivi rezultat, sutra cu razmislit zasto
+    #### radi, ali izbacuje krivi rezultat, sutra cu to pogledat
     def period(self):
         while True:
             self.__move()
