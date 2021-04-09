@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import math
-
+ 
 class HarmonicOscillator:
     def init(self,m,k,v0,A,dt):
         self.m = m
