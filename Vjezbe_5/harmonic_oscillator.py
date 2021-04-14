@@ -119,8 +119,8 @@ class HarmonicOscillator:
             if e <= self.x0 + self.dt and e >= self.x0 - self.dt:
                 i = self.x.index(e)
                 ti = self.t[i]
-                break
-        
+                break        
+
         return 2*ti
 
     def period_analitic(self):
