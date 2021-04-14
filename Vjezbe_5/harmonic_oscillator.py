@@ -87,7 +87,7 @@ class HarmonicOscillator:
             
         return self.x, self.t
     
-        #### radi, ali izbacuje krivi rezultat, sutra cu to pogledat
+        ## radi, ali izbacuje krivi rezultat, sutra cu to pogledat
     #def period(self):
     #    while True:
     #        self.__move()
@@ -97,7 +97,7 @@ class HarmonicOscillator:
 
     #    return T
 
-        ###takoder radi, ali izbacuje krivi rezultat
+        ## takoder radi, ali izbacuje krivi rezultat
     #def period(self):
     #    t = 0
     #    while True:
@@ -110,7 +110,7 @@ class HarmonicOscillator:
 
     #    return T
 
-        #takoder radi, ali izbacuje krivi rezultat
+        ## takoder radi, ali izbacuje krivi rezultat
     def period(self):
         self.oscillate(10)
         del self.x[0]
