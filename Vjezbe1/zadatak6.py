@@ -3,7 +3,7 @@ from math import sqrt, pi, sin, cos
 
 def nacrtaj_k_i_t(sx,sy,r,tx,ty):
     x = []
-    y = []
+    y = [] 
     for fi in range (1, 360):
         rad = fi*pi/180
         xi = sx + r*cos(rad)

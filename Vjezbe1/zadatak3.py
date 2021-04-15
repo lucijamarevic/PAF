@@ -1,7 +1,7 @@
 while True:
     a = input("Unesite x koordinatu prve tocke: ")
     try:
-        x1 = float(a)
+        x1 = float(a) 
         break
     except ValueError:
         print("Koordinata mora biti broj, ponovite unos.")

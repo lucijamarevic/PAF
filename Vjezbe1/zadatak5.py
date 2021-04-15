@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 
 def nadi_jednadzbu(x1,x2,y1,y2):
     k = (y2-y1)/(x2-x1)
-    l = k*(-x1) + y1
+    l = k*(-x1) + y1 
     if l == 0:
         print(f"Jednadzba pravca glasi: y = {k}x")
     else:
