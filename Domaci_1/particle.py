@@ -79,9 +79,12 @@ class Particle:
         self.mx = mx
         self.my = my
         self.r = r
-        self.v0 = 0
+        d_list = []
+        v_list = []
+
+        # dio koji racunau brzinu
         pogodena = False
-        while True:
+        for self.v0 in range(101):
             self.vx = self.v0*math.cos(self.kut)
             self.vy = self.v0*math.sin(self.kut)
             self.__move()
@@ -90,24 +93,60 @@ class Particle:
                 pogodena = True
                 break
             else: 
-                if self.v0 > 100:
-                    break
-                else:
-                    self.v0 += 0.5
+                d_list.append(D - self.r)
+                v_list.append(self.v0)
         
         if pogodena:
             print("Potrebna brzina za pogoditi metu je: {:.2f}m/s".format(self.v0))
-        else: 
+
+            # dio koji crta metu
+            x = []
+            y = []
+            for fi in list(np.linspace(0,360, num = 3600)):    
+                rad = fi*math.pi/180
+                xi = self.mx + self.r*math.cos(rad)
+                x.append(xi)
+                yi = self.my + self.r*math.sin(rad)
+                y.append(yi)
+            plt.plot(x,y)
+
+            # dio koji crta putanju
+            self.init(self.v0,self.theta,self.x0,self.y0,self.dt )
+            self.plot_trajectory()
+            self.reset()
+
+        else:
+            d = min(d_list)
             print("Nije moguce pogoditi metu sa zadanim kutem.")
+            print("Najmanja udaljenost od mete za zadani kut iznosti: {:.2f}".format(d))
+
+            indeks = d_list.index(d)
+            v = v_list[indeks]
+
+            # dio koji crta metu
+            x = []
+            y = []
+            for fi in list(np.linspace(0,360, num = 3600)):    
+                rad = fi*math.pi/180
+                xi = self.mx + self.r*math.cos(rad)
+                x.append(xi)
+                yi = self.my + self.r*math.sin(rad)
+                y.append(yi)
+            plt.plot(x,y)
+
+            # dio koji crta putanju
+            self.init(v,self.theta,self.x0,self.y0,self.dt )
+            self.plot_trajectory()
+            self.reset()
     
     def angle_to_hit_target(self,mx,my,r):
         self.mx = mx
         self.my = my
         self.r = r
         d_lista = []
+        th_lista = []
 
-        ### dio koji racuna kut
-        self.theta = 0
+        # dio koji racuna kut
         pogodena = False
         for self.theta in range(91):
             self.kut = self.theta*math.pi/180
@@ -120,16 +159,12 @@ class Particle:
                 break
             else:
                 d_lista.append(D - self.r)
-                d = min(d_lista)
+                th_lista.append(self.theta)
 
         if pogodena:
             print("Potreban kut za pogoditi metu je: {}°".format(self.theta))
-        else: 
-            print("Nije moguce pogoditi metu sa zadanom brzinom.")
-            print("Najmanja udaljenost od mete za zadanu brzinu je: {:.2f}m.".format(d))
-
-        if pogodena:
-            ### dio koji crta metu
+            
+            # dio koji crta metu
             x = []
             y = []
             for fi in list(np.linspace(0,360, num = 3600)):    
@@ -140,6 +175,33 @@ class Particle:
                 y.append(yi)
             plt.plot(x,y)
 
-            ### dio koji crta putanju
+            # dio koji crta putanju
             self.init(self.v0,self.theta,self.x0,self.y0,self.dt )
             self.plot_trajectory()
+            self.reset()
+        
+        else:      # ode nesto ne valja
+            d = min(d_lista)
+            print("Nije moguce pogoditi metu sa zadanom brzinom.")
+            print("Najmanja udaljenost od mete za zadanu brzinu je: {:.2f}m.".format(d))
+            
+            indeks = d_lista.index(d)
+            theta = th_lista[indeks]
+
+            #print(theta)
+
+            # dio koji crta metu
+            x = []
+            y = []
+            for fi in list(np.linspace(0,360, num = 3600)):    
+                rad = fi*math.pi/180
+                xi = self.mx + self.r*math.cos(rad)
+                x.append(xi)
+                yi = self.my + self.r*math.sin(rad)
+                y.append(yi)
+            plt.plot(x,y)
+
+            # dio koji crta putanju
+            self.init(self.v0,theta,self.x0,self.y0,self.dt )
+            self.plot_trajectory()
+            self.reset()
