@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-import math
+import math 
 
 class Particle:
     def init(self,v0,theta,x0,y0,dt):
@@ -15,7 +15,7 @@ class Particle:
         self.kut = self.theta*math.pi/180
         self.vx = self.v0*math.cos(self.kut)
         self.vy = self.v0*math.sin(self.kut)
-
+ 
     def reset(self):
         self.v0 = 0
         self.theta = 0

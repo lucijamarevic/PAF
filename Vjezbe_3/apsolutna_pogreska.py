@@ -22,4 +22,4 @@ plt.figure("Ovisnost relativne apsolutne pogreske o izboru vremenskog intervala"
 plt.plot(dt_lista,aps_greska)
 plt.xlabel("dt[s]")
 plt.ylabel("apsolutna pogreska [%]")
-plt.show()
+plt.show() 
