@@ -17,7 +17,7 @@ class Particle:
         self.vy = self.v0*math.sin(self.kut)
  
     def reset(self):
-        self.v0 = 0
+        self.v0 = 0 
         self.theta = 0
         self.xi = 0
         self.yi = 0
