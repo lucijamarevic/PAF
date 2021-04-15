@@ -10,7 +10,7 @@ def grafovi_k_h(v0,th):
     t = []
     x = []
     y = []
-
+ 
     ti = 0
     xi = 0
     vy = v0y

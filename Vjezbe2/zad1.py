@@ -4,7 +4,7 @@ def grafovi(F,m,v0,x0):
     dt = 0.1
     t = []
     a = []
-    v = []
+    v = [] 
     x = []
 
     for i in range(100):

@@ -8,7 +8,7 @@ def crtaj_x_y_graf(v0,th,t):
     v0x = v0*math.cos(kut)
     v0y = v0*math.sin(kut)
     x = []
-    y = []
+    y = [] 
 
     ti = 0
     xi = 0

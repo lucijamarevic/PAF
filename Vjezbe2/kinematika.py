@@ -30,7 +30,7 @@ def jednoliko_gibanje(F,m,t):
     plt.figure("Jednoliko gibanje")
     fig = plt.subplot()
     plt.subplot(2,2,1)
-    plt.plot(t,a)
+    plt.plot(t,a) 
     plt.xlabel("t")
     plt.ylabel("a")
     plt.title("a-t graf")
