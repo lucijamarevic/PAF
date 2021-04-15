@@ -7,7 +7,8 @@ using namespace std;
 
 void ispisi_u_intervalu(int a,int b, int list) {
     int i = 0;
-    if (i>a && i<b; i++) {
+    for(i=0, 0<b, i++)
+    if (list[i]>a && list[i]<b) {
         cout << list[i] << endl;
     }
 }
