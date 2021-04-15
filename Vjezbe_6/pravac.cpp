@@ -6,10 +6,10 @@ void jednadzba_pravca(double x1, double y1, double x2, double y2) {
     double l = k*(-x1) + y1;
 
     if (l == 0) {
-        std::cout << "Jednadzba pravca glasi"<< k << "x." << std::endl;
+        std::cout << "Jednadzba pravca glasi "<< k << "x." << std::endl;
     }
     else {
-        std::cout << "Jednadzba pravca glasi" << k << "x + " << l << "."  << std::endl;
+        std::cout << "Jednadzba pravca glasi " << k << "x + " << l << "."  << std::endl;
     }
 } 
 
