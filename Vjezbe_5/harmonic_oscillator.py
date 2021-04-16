@@ -87,7 +87,7 @@ class HarmonicOscillator:
             
         return self.x, self.t
     
-    def period(self):               # izbacuje krivi rezultat
+    def period(self):
         T = 0
         while True:
             self.__move()
@@ -100,13 +100,6 @@ class HarmonicOscillator:
             if self.xi > 0:
                 break
         return 2*T
-                
-    #    while True:
-    #        self.__move()
-    #        if self.xi <= self.x0 + self.dt and self.xi >= self.x0 - self.dt:
-    #            T = 2*self.ti       
-    #            break
-    #    return T
 
     def period_analitic(self):
         return 2*math.pi*math.sqrt(self.m/self.k)
