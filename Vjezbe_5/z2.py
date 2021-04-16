@@ -5,7 +5,7 @@ import numpy as np
 h1 = ho.HarmonicOscillator()
 
 def preciznost():
-    dt_lista = list(np.linspace(0.01,0.1, 20))
+    dt_lista = list(np.linspace(0.01,0.11, 50))
     num_period = []
     a_period = []
 
@@ -24,7 +24,7 @@ def preciznost():
     plt.show()
 
 def apsolutna_pogreska():
-    dt_lista = list(np.linspace(0.01,0.1, 20))
+    dt_lista = list(np.linspace(0.01,0.11, 50))
     aps_pogreska = []
 
     for dt in dt_lista:
@@ -38,5 +38,5 @@ def apsolutna_pogreska():
     plt.title("preciznost numerickog racunanja perioda")
     plt.show()
 
-preciznost()
 apsolutna_pogreska()
+preciznost()
