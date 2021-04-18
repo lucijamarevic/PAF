@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
 
 class Particle:
     def init(self,func,m,x0,v0,total_time,dt):
