@@ -31,6 +31,7 @@ def apsolutna_pogreska():
         h1.init(0.1,5,0,0.5,dt)    #(m,k,v0,A,dt)
         greska = (abs(h1.period() - h1.period_analitic()) / h1.period_analitic()) * 100
         aps_pogreska.append(greska)
+        h1.reset()
 
     plt.plot(dt_lista, aps_pogreska)
     plt.xlabel("dt [s]")
