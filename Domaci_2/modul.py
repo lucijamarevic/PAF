@@ -23,15 +23,17 @@ class Particle:
         self.x.append(self.xi)
     
     def reset(self):
-        del self.F
+        del self.func
         del self.m
-        del self.ai
         del self.xi
         del self.vi
         del self.ti
+        del self.fi
+        del self.ai
         del self.t_uk
         del self.dt
         del self.t
+        del self.f
         del self.a
         del self.v
         del self.x
