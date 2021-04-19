@@ -15,6 +15,16 @@ class VertikalniHitac:
         print("Objekt je uspjesno storen.")
         print("Pocetna visina iznosi: {:.2f}m, a pocetna brzina: {:.2f}m/s".format(h0,v0))
 
+    def reset():
+        del self.h0s
+        del self.hi
+        del self.v0
+        del self.vi
+        del self.ti
+        del self.h 
+        del self.v 
+        del self.t
+
     def change_height(self,novi_h0):
         self.h0 = novi_h0
         self.hi = self.h0
@@ -35,3 +45,13 @@ class VertikalniHitac:
             self.v.append(self.vi)
             self.t.append(self.ti)
         return self.h, self.v, self.t 
+
+    def max_height(self,dt):
+        self.move(dt)
+        h_max = max(self.h)
+        return h_max
+
+    def total_time(self,dt):
+        self.move(dt)
+        t_uk = max(self.t)
+        return t_uk
