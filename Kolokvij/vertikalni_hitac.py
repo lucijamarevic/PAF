@@ -12,7 +12,7 @@ class VertikalniHitac:
         self.v.append(self.vi)
         self.t.append(self.ti)
         
-        print("Objekt je uspjesno storen.")
+        print("Objekt je uspjesno stvoren.")
         print("Pocetna visina iznosi: {:.2f}m, a pocetna brzina: {:.2f}m/s".format(h0,v0))
 
     def reset(self):
