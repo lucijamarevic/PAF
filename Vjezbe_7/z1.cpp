@@ -6,18 +6,13 @@ class Particle {
 
     public:
 
-        Particle(double v0, double theta, double x0, double y0, double step = 0.001);
-        ~Particle();
+        double ti,xi,yi,vx,vy,kut;    //attributes
+        double dt;
+        double g = -9.81;
 
-        double range();
-        double time();
-    
-    private:
+        Particle(double v0, double theta, double x0, double y0, double step = 0.001)  //constructor
+        //~Particle();
         {
-            double ti,xi,yi,vx,vy;
-            double dt;
-            double g = -9.81;
-
             ti = 0;
             dt = step;
             xi = x0;
@@ -26,6 +21,11 @@ class Particle {
             vx = v0*cos(kut);
             vy = v0*sin(kut);
         }
+
+        double range();
+        double time();
+    
+    private:
 
         void evolve()
         {
