@@ -2,8 +2,6 @@
 #include <math.h>
 #include "particle.h"
 
-using namespace std;
-
 Particle::Particle(double v0, double theta, double x0, double y0, double step) //constructor
     {
         ti = 0;
