@@ -38,9 +38,18 @@ void zamjeni_clanove(int lista[], int c, int d) {
     ispisi_listu(lista);
 }
 
-//void sortiraj(int lista[]) {
-
-//}
+void sortiraj(int lista[]) {
+    int n = sizeof(lista);
+    int lista_2 = {};
+    int e = lista[0];
+    for (int i = 1; i < n; i++) {
+        int e = lista[i];
+        if (e > e) {
+            lista[i] = e;
+        }
+    }
+    ispisi_listu(lista);
+}
 
 int main() {
     const int n = 5;
@@ -49,5 +58,6 @@ int main() {
     ispis_u_intervalu(lista, 2,7);
     obrnuti_redosljed(lista);
     zamjeni_clanove(lista,5,3);
+    sortiraj(lista);
     return 0;
 }
