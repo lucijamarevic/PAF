@@ -10,10 +10,10 @@ class Particle {
         void evolve();
 
 
-    public:
+    public: 
 
         Particle(double v0, double theta, double x0, double y0, double step = 0.001);  //constructor
-        ~Particle();  //destructor
+        //~Particle();  //destructor
 
         double range();
         double time();
