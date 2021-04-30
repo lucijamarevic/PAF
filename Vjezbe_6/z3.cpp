@@ -20,7 +20,7 @@ void reverse_list()  {   // ne valja
     std::list<int> lista;
     lista.reverse();
     for (std::list<int>::iterator it=lista.begin(); it!=lista.end(); ++it)
-        std::cout << ' ' << *it;
+        std::cout << ' \t' << *it;
     std::cout << '\n';
 }
 
