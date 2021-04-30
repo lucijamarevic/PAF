@@ -1,5 +1,4 @@
 #include <iostream>
-#include <list>
 
 void ispisi_listu(int lista[]) {
     int n = sizeof(lista);  // tako dobijem broj elemenata
@@ -32,12 +31,16 @@ void obrnuti_redosljed(int lista[])  {
 }
 
 void zamjeni_clanove(int lista[], int c, int d) {
-    int e = lista[c];  // nadem element na mjestu c
-    lista[c] = lista[d];  // zamjenim ga s elementom na mjestu d
+    int e = lista[c-1];  // nadem element na mjestu c
+    lista[c-1] = lista[d-1];  // zamjenim ga s elementom na mjestu d
     // int e ide prije ovoga jer bi u suprotnom element od c vec bio zamjenjen elementom od d
-    lista[d] = e; // zamjenim element na mjestu d s elementomo na mjestu c
+    lista[d-1] = e; // zamjenim element na mjestu d s elementomo na mjestu c
     ispisi_listu(lista);
 }
+
+//void sortiraj(int lista[]) {
+
+//}
 
 int main() {
     const int n = 5;
@@ -45,6 +48,6 @@ int main() {
     ispisi_listu(lista);
     ispis_u_intervalu(lista, 2,7);
     obrnuti_redosljed(lista);
-    zamjeni_clanove(lista,1,2);
+    zamjeni_clanove(lista,5,3);
     return 0;
 }
