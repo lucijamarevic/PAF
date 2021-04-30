@@ -59,5 +59,17 @@ int main() {
     double t = p1.time(); 
     std::cout << "Domet iznosi: " << D << "m." << std::endl;  // calling a method
     std::cout << "vrijeme iznosi: " << t << "s." << std::endl;  // calling a method
+
+    Particle p2(100,45,0,0);  // creating an object, step by default (v0,theta,x0,y0,step)
+    double D2 = p2.range();
+    double t2 = p2.time(); 
+    std::cout << "Domet iznosi: " << D2 << "m." << std::endl;  // calling a method
+    std::cout << "vrijeme iznosi: " << t2 << "s." << std::endl;  // calling a method
+
+    Particle p3(50,30,0,0);  // creating an object, step by default (v0,theta,x0,y0,step)
+    double D3 = p3.range();
+    double t3 = p3.time(); 
+    std::cout << "Domet iznosi: " << D3 << "m." << std::endl;  // calling a method
+    std::cout << "vrijeme iznosi: " << t3 << "s." << std::endl;  // calling a method
     return 0;
     }
