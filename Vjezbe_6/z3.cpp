@@ -1,7 +1,5 @@
 #include <iostream>
-#include <math.h>
-
-using namespace std;
+#include <list>
 
 const int n = 5;
 int lista[n] = {1,5,2,4,6};
@@ -9,24 +7,21 @@ int lista[n] = {1,5,2,4,6};
 void ispis_u_intervalu(unsigned a, unsigned b) {
     for(int i = 0; i < n; i++) {
         if (lista[i] >= a && lista[i] <= b) {
-            cout << lista[i] << " ";
+            std::cout << lista[i] << " ";
         }
         else {
             continue;
         } } 
-        cout << endl;
+        std::cout << std::endl;
         }   
 
 void reverse_list()  {   // ne valja
-    cout << "Obrnuti redosljed glasi: " << endl;
-    int i,j,element;
-    for (j = n - 1; j = 0; j--) {
-        element = lista[j];
-        for (i = 1; i < n; i++) {
-        lista[i] = element;
-        }
-        cout << lista[i] << endl;
-    }
+    std::cout << "Obrnuti redosljed glasi: " << std::endl;
+    std::list<int> lista;
+    lista.reverse();
+    for (std::list<int>::iterator it=lista.begin(); it!=lista.end(); ++it)
+        std::cout << ' ' << *it;
+    std::cout << '\n';
 }
 
 int main() {
