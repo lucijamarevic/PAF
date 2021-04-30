@@ -3,7 +3,7 @@
 
 void ispisi_listu(int lista[]) {
     int n = sizeof(lista);  // tako dobijem broj elemenata
-    for(int i = 0; i = n-1; i++) {
+    for(int i = 0; i < n; i++) {
         std::cout << lista[i] << " ";
     }
     std::cout << std::endl;  
@@ -11,7 +11,7 @@ void ispisi_listu(int lista[]) {
 
 void ispis_u_intervalu(int lista[], unsigned a, unsigned b) {
     int n = sizeof(lista);  // tako dobijem broj elemenata
-    for(int i = 0; i = n-1; i++) {
+    for(int i = 0; i < n; i++) {
         if (lista[i] >= a && lista[i] <= b) {
             std::cout << lista[i] << " ";
         }
@@ -24,7 +24,7 @@ void ispis_u_intervalu(int lista[], unsigned a, unsigned b) {
 void obrnuti_redosljed(int lista[])  {
     int n = sizeof(lista);
     int lista_1[n] = {};
-    for (int i = 0; i = n-1; i++) {
+    for (int i = 0; i < n; i++) {
         int k = lista[n - i];  // npr. za i = 3, uzet ce 3 element od kraja
         lista_1[i] = k;  
     }
