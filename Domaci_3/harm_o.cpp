@@ -10,10 +10,10 @@ HarmonicOscillator::HarmonicOscillator(double m, double k, double v0, double x0,
         vi = v0;
         ai = m/k;
         t = time;
-        double x_list[] = {};
-        double v_list[] = {};
-        double a_list[] = {};
-        double t_list[] = {};
+        x_list[1000] = {};
+        v_list[1000] = {};
+        a_list[1000] = {};
+        t_list[1000] = {};
     }
 
 void HarmonicOscillator::move() 
