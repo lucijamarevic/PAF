@@ -1,6 +1,8 @@
 #include "harm_o.h"
+#include <iostream>
+#include <list>
 
-HarmonicOscillator::HarmonicOscillator(double m, double k, double v0, double x0, double time, double step = 0.001)
+HarmonicOscillator::HarmonicOscillator(double m, double k, double v0, double x0, double time, double step)
     {
         ti = 0;
         dt = step;
@@ -8,6 +10,10 @@ HarmonicOscillator::HarmonicOscillator(double m, double k, double v0, double x0,
         vi = v0;
         ai = m/k;
         t = time;
+        double x_list[] = {};
+        double v_list[] = {};
+        double a_list[] = {};
+        double t_list[] = {};
     }
 
 void HarmonicOscillator::move() 
@@ -15,8 +21,11 @@ void HarmonicOscillator::move()
         vi += ai*dt;
         xi += vi*dt;
         ai = (-k/m)*xi;
-        ti += dt;    
-        // jos triba dodat period
+        ti += dt;
+        x_list.push_back(xi);  // error: identifier x_list is undefined
+        v_list.push_back(vi);  // isto
+        a_list.push_back(ai);  // isto
+        t_list.push_back(ti);  // isto
     }
 
 void HarmonicOscillator::oscillate()
@@ -26,13 +35,13 @@ void HarmonicOscillator::oscillate()
         }
     }
 
-double HarmonicOscillator::period()
+double HarmonicOscillator::period()  // ne valja
     {
         T = 0;
         while (true) {
             move();
             if (xi < 0) {
-                T = 0;
+                //std::cout << xi << std::endl;
                 break;
             }
         }    
