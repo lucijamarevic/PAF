@@ -37,7 +37,7 @@ void zamjeni_clanove(int lista[], int n, int c, int d) {
     //ispisi_listu(lista,n);
 }
 
-void sortiraj(int lista[], int n) {   // radi, ali ne dobro
+void sortiraj(int lista[], int n) {
     for (int j = 0; j < n-1; j++) {    
         for (int i = 0; i < n-1; i++) {
             if (lista[i] > lista[i+1]) {
@@ -58,6 +58,6 @@ int main() {
     zamjeni_clanove(moja_lista,n,3,6);
     std::cout << "Zamjenjeni clanovi: " << " ";
     ispisi_listu(moja_lista,n);
-    sortiraj(moja_lista,n);  // ne radi
+    sortiraj(moja_lista,n);
     return 0;
 }
