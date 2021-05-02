@@ -8,7 +8,8 @@ def sortiraj(lista,n):
         for i in range(n-1):
             if lista[i]>lista[i+1]:
                 zamjeni_clanove(lista,n,i,i+1)
-        print(f"Sortirana lista: {lista}")
+            print(f"Sortirana lista u {j}:{i}. ponavljanju: {lista}.")
+        #print(f"Sortirana lista u (j) {j}. ponavljanju: {lista}")
 
 m_lista = [5,4,3,2,1]
 n = len(m_lista)
