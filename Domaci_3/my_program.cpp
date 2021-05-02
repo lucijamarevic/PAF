@@ -6,4 +6,4 @@ int main() {
     //std::cout << "Period iznosi: " << o1.period() << "s." << std::endl;  
     
     return 0;
-    } 
+    }  
