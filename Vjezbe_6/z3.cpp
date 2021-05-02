@@ -53,10 +53,10 @@ int main() {
     const int n = 5;
     int moja_lista[n] = {1,3,5,2,4};
     ispisi_listu(moja_lista,n);
-    ispis_u_intervalu(moja_lista,n,2,7);
+    //ispis_u_intervalu(moja_lista,n,2,7);
+    //obrnuti_redosljed(moja_lista,n);
+    //zamjeni_clanove(moja_lista,n,5,3);
+    //ispisi_listu(moja_lista,n);
     sortiraj(moja_lista,n);  // ne radi
-    obrnuti_redosljed(moja_lista,n);
-    zamjeni_clanove(moja_lista,n,5,3);
-    ispisi_listu(moja_lista,n);
     return 0;
 }
