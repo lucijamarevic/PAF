@@ -36,16 +36,11 @@ void zamjeni_clanove(int lista[], int n, int c, int d) {
 }
 
 void sortiraj(int lista[], int n) {   // radi, ali ne dobro
-    //for (int j = 0; j < n; j++) {
-    //int j;
-    //while (j < n-1) {
         for (int i = 0; i < n; i++) {
             if (lista[i] > lista[i+1]) {
                 zamjeni_clanove(lista,n,i+1,i);
             }
         }
-    //    j++;
-    //}
     ispisi_listu(lista,n);
 }
 
@@ -57,6 +52,6 @@ int main() {
     //obrnuti_redosljed(moja_lista,n);
     //zamjeni_clanove(moja_lista,n,5,3);
     //ispisi_listu(moja_lista,n);
-    sortiraj(moja_lista,n);  // ne radi
+    //sortiraj(moja_lista,n);  // ne radi
     return 0;
 }
