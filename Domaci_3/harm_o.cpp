@@ -1,7 +1,7 @@
 #include "harm_o.h"
 #include <iostream>
 #include <list>
-
+ 
 HarmonicOscillator::HarmonicOscillator(double m, double k, double v0, double x0, double time, double step)
     {
         ti = 0;
@@ -22,10 +22,10 @@ void HarmonicOscillator::move()
         xi += vi*dt;
         ai = (-k/m)*xi;
         ti += dt;
-        x_list.push_back(xi);  // error: identifier x_list is undefined
-        v_list.push_back(vi);  // isto
-        a_list.push_back(ai);  // isto
-        t_list.push_back(ti);  // isto
+        //x_list.push_back(xi);  // error: identifier x_list is undefined
+        //v_list.push_back(vi);  // isto
+        //a_list.push_back(ai);  // isto
+        //t_list.push_back(ti);  // isto
     }
 
 void HarmonicOscillator::oscillate()
