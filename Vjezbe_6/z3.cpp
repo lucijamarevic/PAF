@@ -16,7 +16,7 @@ void ispis_u_intervalu(int lista[], int n, int a, int b) {
         else {
             continue;
         } 
-    } 
+    }  
         std::cout << std::endl;
 }   
 
