@@ -2,7 +2,7 @@
 #include <math.h>
 
 using namespace std;
-
+ 
 void tocka_i_kruznica(double sx, double sy, double r, double tx, double ty) {
     double d = sqrt((sx - tx)*(sx - tx) + (sy - ty)*(sy - ty));
 

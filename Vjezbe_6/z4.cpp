@@ -10,7 +10,7 @@ void rjesi_sustav(float a1, float b1, float c1, float a2, float b2, float c2) {
 
     std::cout << "x = " << x << ", a y = " << y << std::endl;
 }
-
+ 
 int main() {
     rjesi_sustav(1,3,5,2,4,6);
     return 0;
