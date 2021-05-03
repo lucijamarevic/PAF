@@ -54,11 +54,15 @@ class Projectile:
         self.dt = 0
 
     def __move(self):
-        self.xi = self.xi + self.vx*self.dt
-        self.vy = self.vy - a*self.dt
-        self.yi = self.yi + self.vy*self.dt
-        self.x.append(self.xi)
-        self.y.append(self.yi)
+        self.vx += self.ax*self.dt      # x-smjer
+        self.x += self.vx*self.dt
+        self.ax = -sgn(self.vx)*(self.ro*self.cd*self.A/(2*m))*self.vx**2
+        self.x_list.append(self.x)
+        self.vx_list.append(self.v)
+        self.ax_list.append(self.ax)
+        self.vy += self.ay*self.dt      #y-smjer
+        self.y += self.vy*self.dt
+        self.ay = -g-sgn(self.vy)*(self.ro*self.cd*self.A/(2*m))*self.vy**2
 
     def range(self):
         while self.yi >= 0:
