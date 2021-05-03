@@ -1,3 +1,5 @@
+#include <vector>
+
 class HarmonicOscillator {
 
     private:
@@ -5,7 +7,7 @@ class HarmonicOscillator {
         double m,k,v0,x0,dt,t;
         double xi,vi,ai,ti;
         double T;
-        double x_list[1000];
+        vector<double> x_list;
         double v_list[1000];
         double a_list[1000];
         double t_list[1000];
