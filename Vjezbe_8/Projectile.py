@@ -4,6 +4,15 @@ import math
 
 class Projectile:
     g = -9.81
+    def __init__(self):
+        self.vx_list = []
+        self.vy_list = []
+        self.x_list = []
+        self.y_list = []
+        self.ax_list = []
+        self.ay_list = []
+        self.t_list = []
+
     def init(self,m,v0,theta,x0,y0,ro,cd,A,dt):
         self.m = m
         self.v0 = v0         # za brzine
@@ -11,14 +20,10 @@ class Projectile:
         self.kut = self.theta*math.pi/180
         self.vx = self.v0*math.cos(self.kut)
         self.vy = self.v0*math.sin(self.kut)
-        self.vx_list = []
-        self.vy_list = []
         self.vx_list.append(self.vx)
         self.vy_list.append(self.vy)
         self.x = x0          # za polozaj
         self.y = y0
-        self.x_list = []
-        self.y_list = []
         self.x_list.append(self.x)
         self.y_list.append(self.y)
         self.ro = ro         # za akceleraciju
@@ -26,11 +31,11 @@ class Projectile:
         self.A = A
         self.ax = -sgn(self.vx)*(self.ro*self.cd*self.A/(2*m))*self.vx**2
         self.ay = -g-sgn(self.vy)*(self.ro*self.cd*self.A/(2*m))*self.vy**2
-        self.ax_list = []
-        self.ay_list = []
         self.ax_list.append(self.ax)
         self.ay_list.append(self.ay)
         self.dt = dt
+        self.t = 0
+        self.t_list.append(self.t)
  
     def reset(self):
         self.m = 0
@@ -64,14 +69,27 @@ class Projectile:
         self.y += self.vy*self.dt
         self.ay = -g-sgn(self.vy)*(self.ro*self.cd*self.A/(2*m))*self.vy**2
 
-    def range(self):
-        while self.yi >= 0:
+    def move(self):
+        while self.y >= 0:
             self.__move()
+            self.t += self.dt
+            t_list.append(self.t)
+
+    def range(self):
+        self.move()
         return max(self.x)
 
     def analiticki_domet(self):
         D = ((self.v0**2)*math.sin(2*self.kut))/9.81
         return D
+
+    def total_time(self):
+        self.move()
+        return t
+
+    def max_speed(self):
+        self.move()
+        return max(self.v)
 
     def plot_trajectory(self):
         plt.figure("Graf za trenutno stanje")
