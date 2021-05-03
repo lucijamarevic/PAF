@@ -3,7 +3,6 @@ import numpy as np
 import math 
 
 class Projectile:
-    g = -9.81
     def __init__(self):
         self.vx_list = []
         self.vy_list = []
@@ -14,6 +13,7 @@ class Projectile:
         self.t_list = []
 
     def init(self,m,v0,theta,x0,y0,ro,cd,A,dt):
+        g = -9.81
         self.m = m
         self.v0 = v0         # za brzine
         self.theta = theta
@@ -29,8 +29,8 @@ class Projectile:
         self.ro = ro         # za akceleraciju
         self.cd = cd
         self.A = A
-        self.ax = -sgn(self.vx)*(self.ro*self.cd*self.A/(2*m))*self.vx**2
-        self.ay = -g-sgn(self.vy)*(self.ro*self.cd*self.A/(2*m))*self.vy**2
+        self.ax = -np.sign(self.vx)*(self.ro*self.cd*self.A/(2*self.m))*self.vx**2
+        self.ay = -g-np.sign(self.vy)*(self.ro*self.cd*self.A/(2*self.m))*self.vy**2
         self.ax_list.append(self.ax)
         self.ay_list.append(self.ay)
         self.dt = dt
@@ -59,21 +59,25 @@ class Projectile:
         self.dt = 0
 
     def __move(self):
+        g = -9.81
         self.vx += self.ax*self.dt      # x-smjer
         self.x += self.vx*self.dt
-        self.ax = -sgn(self.vx)*(self.ro*self.cd*self.A/(2*m))*self.vx**2
+        self.ax = -np.sign(self.vx)*(self.ro*self.cd*self.A/(2*self.m))*self.vx**2
         self.x_list.append(self.x)
-        self.vx_list.append(self.v)
+        self.vx_list.append(self.vx)
         self.ax_list.append(self.ax)
         self.vy += self.ay*self.dt      #y-smjer
         self.y += self.vy*self.dt
-        self.ay = -g-sgn(self.vy)*(self.ro*self.cd*self.A/(2*m))*self.vy**2
+        self.ay = -g-np.sign(self.vy)*(self.ro*self.cd*self.A/(2*self.m))*self.vy**2
+        self.y_list.append(self.y)
+        self.vy_list.append(self.vy)
+        self.ay_list.append(self.ay)
 
     def move(self):
         while self.y >= 0:
             self.__move()
             self.t += self.dt
-            t_list.append(self.t)
+            self.t_list.append(self.t)
 
     def range(self):
         self.move()
@@ -92,6 +96,7 @@ class Projectile:
         return max(self.v)
 
     def plot_trajectory(self):
+        self.move()
         plt.figure("Graf za trenutno stanje")
         plt.plot(self.x,self.y)
         plt.title("x-y graf")
