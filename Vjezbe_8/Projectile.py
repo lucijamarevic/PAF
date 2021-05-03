@@ -80,7 +80,7 @@ class Projectile:
             self.t_list.append(self.t)
 
     def range(self):
-        self.move()
+        self.move() 
         return max(self.x)
 
     def analiticki_domet(self):

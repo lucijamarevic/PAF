@@ -1,4 +1,4 @@
-import projectile as pr
+import Projectile as pr 
 import numpy as np
 
 p = pr.Projectile()
