@@ -1,6 +1,5 @@
 #include "harm_o.h"
 #include <iostream>
-#include <list> 
  
 HarmonicOscillator::HarmonicOscillator(double m, double k, double v0, double x0, double time, double step)
     {
