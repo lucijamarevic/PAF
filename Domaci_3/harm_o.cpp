@@ -10,10 +10,6 @@ HarmonicOscillator::HarmonicOscillator(double m, double k, double v0, double x0,
         vi = v0;
         ai = m/k;
         t = time;
-        x_list[1000] = {};
-        v_list[1000] = {};
-        a_list[1000] = {};
-        t_list[1000] = {};
     }
 
 void HarmonicOscillator::move() 
@@ -22,10 +18,10 @@ void HarmonicOscillator::move()
         xi += vi*dt;
         ai = (-k/m)*xi;
         ti += dt;
-        x_list.push_back(xi);  // error: identifier x_list is undefined // radi ako stain vektor
-        //v_list.push_back(vi);  // isto
-        //a_list.push_back(ai);  // isto
-        //t_list.push_back(ti);  // isto
+        x_list.push_back(xi);
+        v_list.push_back(vi);
+        a_list.push_back(ai); 
+        t_list.push_back(ti); 
     }
 
 void HarmonicOscillator::oscillate()
