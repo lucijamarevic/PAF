@@ -20,7 +20,7 @@ void HarmonicOscillator::move()
         x_list.push_back(xi);
         v_list.push_back(vi);
         a_list.push_back(ai); 
-        t_list.push_back(ti); 
+        t_list.push_back(ti);
     }
 
 void HarmonicOscillator::oscillate()
