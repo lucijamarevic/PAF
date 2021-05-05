@@ -27,8 +27,8 @@ class Projectile:
         self.ro = ro         # za akceleraciju
         self.cd = cd
         self.A = A
-        self.ax = -abs(self.vx)*((self.ro*self.cd*self.A/(2*self.m)))*self.vx**2
-        self.ay = -9.81-abs(self.vy)*((self.ro*self.cd*self.A/(2*self.m)))*self.vy**2
+        self.ax = 0
+        self.ay = 0
         self.ax_list.append(self.ax)
         self.ay_list.append(self.ay)
         self.dt = dt
@@ -36,7 +36,6 @@ class Projectile:
         self.t_list.append(self.t)
  
     def reset(self):
-        self.m = 0
         self.v0 = 0        
         self.theta = 0
         self.vx = 0
@@ -76,13 +75,13 @@ class Projectile:
         g = -9.81
         self.vx += self.ax*self.dt      # x-smjer
         self.x += self.vx*self.dt
-        self.ax = -abs(self.vx)*((self.ro*self.cd*self.A/(2*self.m)))*self.vx**2
+        self.ax = -abs(self.vx*self.vx*self.ro*self.cd*self.A)/(2*self.m)
         self.x_list.append(self.x)
         self.vx_list.append(self.vx)
         self.ax_list.append(self.ax)
         self.vy += self.ay*self.dt      #y-smjer
         self.y += self.vy*self.dt
-        self.ay = -9.81-abs(self.vy)*((self.ro*self.cd*self.A/(2*self.m)))*self.vy**2
+        self.ay = -9.81-abs(self.vy*self.vy*self.ro*self.cd*self.A)/(2*self.m)
         self.y_list.append(self.y)
         self.vy_list.append(self.vy)
         self.ay_list.append(self.ay)
