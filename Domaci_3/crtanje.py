@@ -1,4 +1,4 @@
-import matplotlib
+import matplotlib.pyplot as plt
 
 with open('data.txt', 'r') as file:
     procitano = file.read()
