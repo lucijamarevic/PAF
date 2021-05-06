@@ -11,11 +11,11 @@ int main() {
     // spremanje u datoteku
     std::ofstream fw;  // ispisuje, ali ne dobro
     fw.open("data.txt", std::ios_base::app); //std::ofstream::out);
-    if (fw.is_open())
+    if (fw.is_open()) 
         {
             int a = sizeof(o1.x_list);   
             for (int i = 0; i < a; i++) {  
-                fw << o1.x_list[i];
+                fw << o1.x_list.at(i);
             }
             // ako pokrecen kod vise puta, ne pise ispocetka, nego nastavlja
             
