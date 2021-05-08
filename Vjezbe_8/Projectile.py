@@ -72,6 +72,8 @@ class Projectile:
             self.t += self.dt
             self.t_list.append(self.t)
 
+        return self.x_list, self.y_list
+
     def __ax(self,v):
         return -abs(self.vx*self.vx*self.ro*self.cd*self.A)/(2*self.m)
 
@@ -92,14 +94,14 @@ class Projectile:
         self.vy_list.append(self.vy)
         self.ay_list.append(self.ay)
 
-    def move_ar(self):   # triba skuzit zasto ne crta lipo
+    def move_ar(self):   
         while self.y >= 0:
             self.__move_ar()
             self.t += self.dt
             self.t_list.append(self.t)
         return self.x_list,self.y_list
 
-    def __runge_kutta(self):      # nesto ode ne radi
+    def __runge_kutta(self):    
         # za x kommponentu
         k1vx = self.__ax(self.vx)*self.dt 
         k1x = self.vx*self.dt
@@ -112,6 +114,12 @@ class Projectile:
 
         self.vx += (1/6)*(k1vx + 2*k2vx + 2*k3vx + k4vx)
         self.x += (1/6)*(k1x + 2*k2x + 2*k3x + k4x)
+        
+        self.ax = self.__ax(self.vx)
+
+        self.x_list.append(self.x)
+        self.vx_list.append(self.vx)
+        self.ax_list.append(self.ax)
 
         # za y komponentu
         k1vy = self.__ay(self.vy)*self.dt 
@@ -126,7 +134,13 @@ class Projectile:
         self.vy += (1/6)*(k1vy + 2*k2vy + 2*k3vy + k4vy)
         self.y += (1/6)*(k1y + 2*k2y + 2*k3y + k4y)
 
-    def runge_kutta(self):    # ili ode nesto ne radi
+        self.ay = self.__ay(self.vy)
+
+        self.y_list.append(self.y)
+        self.vy_list.append(self.vy)
+        self.ay_list.append(self.ay)
+
+    def runge_kutta(self):   
         while self.y >= 0:
             self.__runge_kutta()
             self.t += self.dt
