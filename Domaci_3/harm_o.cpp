@@ -1,14 +1,46 @@
 #include "harm_o.h"
 #include <iostream>
+
+using std::cout;
+using std::endl;
  
 HarmonicOscillator::HarmonicOscillator(double m, double k, double v0, double x0, double time, double step)
     {
+        k = k;
+        m = m;
         ti = 0;
         xi = x0;
         vi = v0;
-        ai = m/k;
+        ai = -k/m;
+        a = ai;
         t = time;
         dt = step;
+        x_list.push_back(xi);
+        v_list.push_back(vi);
+        a_list.push_back(ai); 
+        t_list.push_back(ti);
+
+        /*cout << "t: " << ti << endl;
+        cout << "a: " << ai << endl;
+        cout << "v: " << vi << endl;
+        cout << "x: " << xi << endl;*/
+    }
+
+void HarmonicOscillator::move()
+    {
+        vi = vi + ai*dt;
+        xi = xi + vi*dt;
+        ai = a*xi;
+        ti += dt;
+        x_list.push_back(xi);
+        v_list.push_back(vi);
+        a_list.push_back(ai); 
+        t_list.push_back(ti);
+
+        /*cout << "t: " << ti << endl;
+        cout << "a: " << ai << endl;
+        cout << "v: " << vi << endl;
+        cout << "x: " << xi << endl;*/
     }
 
 void HarmonicOscillator::oscillate()
@@ -16,38 +48,31 @@ void HarmonicOscillator::oscillate()
         int n = t/dt;
         for (int i = 0; i < n ; i++)
         {
-            vi = vi + ai*dt;
-            xi = xi + vi*dt;
-            ai = (-k/m)*xi;
-            ti += dt;
-            x_list.push_back(xi);
-            v_list.push_back(vi);
-            a_list.push_back(ai); 
-            t_list.push_back(ti);
+            move();
         }
  
     for (int i = 0; i < n; i++) {  
-        std::cout << x_list.at(i) << " ";
+        cout << x_list.at(i) << " ";
     }
-    std::cout << std::endl;
-    std::cout << "\n" << std::endl;
+    cout << endl;
+    cout << "\n" << endl;
  
     for (int j = 0; j < n; j++) {  
-        std::cout << v_list.at(j) << " ";
+        cout << v_list.at(j) << " ";
     }
-    std::cout << std::endl;
-    std::cout << "\n" << std::endl;
+    cout << endl;
+    cout << "\n" << endl;
   
     for (int k = 0; k < n; k++) {  
-        std::cout << a_list.at(k) << " ";
+        cout << a_list.at(k) << " ";
     }
-    std::cout << std::endl;
-    std::cout << "\n" << std::endl;
+    cout << endl;
+    cout << "\n" << endl;
   
     for (int l = 0; l < n; l++) {  
-        std::cout << t_list.at(l) << " ";
+        cout << t_list.at(l) << " ";
     }
-    std::cout << std::endl;
+    cout << endl;
     }
 
 double HarmonicOscillator::period()  // ne valja
