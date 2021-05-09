@@ -13,42 +13,38 @@ HarmonicOscillator::HarmonicOscillator(double m, double k, double v0, double x0,
 
 void HarmonicOscillator::oscillate()
     {
-        while (true) {
-            vi += ai*dt;
-            xi += vi*dt;
+        int n = t/dt;
+        for (int i = 0; i < n ; i++)
+        {
+            vi = vi + ai*dt;
+            xi = xi + vi*dt;
             ai = (-k/m)*xi;
             ti += dt;
             x_list.push_back(xi);
             v_list.push_back(vi);
             a_list.push_back(ai); 
             t_list.push_back(ti);
-            if (ti > t) {
-                break;
-            }
         }
-    int a = sizeof(x_list);   
-    for (int i = 0; i < a; i++) {  
+ 
+    for (int i = 0; i < n; i++) {  
         std::cout << x_list.at(i) << " ";
     }
     std::cout << std::endl;
     std::cout << "\n" << std::endl;
-
-    int b = sizeof(v_list);   
-    for (int j = 0; j < b; j++) {  
+ 
+    for (int j = 0; j < n; j++) {  
         std::cout << v_list.at(j) << " ";
     }
     std::cout << std::endl;
     std::cout << "\n" << std::endl;
-
-    int c = sizeof(a_list);   
-    for (int k = 0; k < c; k++) {  
+  
+    for (int k = 0; k < n; k++) {  
         std::cout << a_list.at(k) << " ";
     }
     std::cout << std::endl;
     std::cout << "\n" << std::endl;
-
-    int d = sizeof(t_list);   
-    for (int l = 0; l < d; l++) {  
+  
+    for (int l = 0; l < n; l++) {  
         std::cout << t_list.at(l) << " ";
     }
     std::cout << std::endl;
