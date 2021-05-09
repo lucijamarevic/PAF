@@ -19,6 +19,7 @@ class HarmonicOscillator {
         vector<double>v_list;
         vector<double>a_list;
         vector<double>t_list;
+        int n;
 
         void oscillate();  
         double period();

@@ -2,27 +2,42 @@ import matplotlib.pyplot as plt
 
 with open('data.txt', 'r') as file:
     content = file.readlines()
-    x = list(content[0])
-    v = list(content[1])
-    a = list(content[2])
-    t = list(content[3])
+    x_str = (content[0].split(" "))
+    v_str = (content[1].split(" "))
+    a_str = (content[2].split(" "))
+    t_str = (content[3].split(" "))
+    del x_str[-1]
+    del a_str[-1]
+    x = []
+    v = []
+    a = []
+    t = []
+    for e in x_str:
+        x.append(float(e))
+    for e in v_str:
+        v.append(float(e))
+    for e in a_str:
+        a.append(float(e))
+    for e in t_str:
+        t.append(float(e))
 
-plt.figure("Harmonic oscilator")
-fig = plt.subplot()
-plt.subplot(2,2,1)
 plt.plot(t,x)
 plt.xlabel("t [s]")
 plt.ylabel("x [m]")
 plt.title("x-t graf")
-plt.subplot(2,2,2)
+plt.savefig("x-t graf")
+plt.show()
+
 plt.plot(t,v)
 plt.xlabel("t [s]")
 plt.ylabel("v [m/s]")
 plt.title("v-t graf")
-plt.subplot(2,2,3)
+plt.savefig("v-t graf")
+plt.show()
+
 plt.plot(t,a)
 plt.xlabel("t [s]")
 plt.ylabel("a [m/s^2]")
 plt.title("a-t graf")
-plt.subplots_adjust(wspace = 0.4, hspace = 0.6)
+plt.savefig("a-t graf")
 plt.show()

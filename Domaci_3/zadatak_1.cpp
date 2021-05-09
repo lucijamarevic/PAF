@@ -1,8 +1,4 @@
 #include "harm_o.h" 
-#include <iostream> 
-#include <fstream>
-#include <string> 
-#include <string.h> 
 
 int main() {
     HarmonicOscillator o1(0.1,5,0.0,0.3,2,0.01);   //(m,k,v0,x0,time,step)
