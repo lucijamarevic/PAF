@@ -156,20 +156,24 @@ class Projectile:
         plt.show()
 
     def range(self):
-        self.move() 
-        return max(self.x)
+        self.move_ar() 
+        return max(self.x_list)
+
+    def range_r_k(self):
+        self.runge_kutta() 
+        return max(self.x_list)
 
     def analiticki_domet(self):
         D = ((self.v0**2)*math.sin(2*self.kut))/9.81
         return D
 
     def total_time(self):
-        self.move()
-        return t
+        self.runge_kutta()
+        return self.t
 
     def max_speed(self):
-        self.move()
-        return max(self.v)
+        self.runge_kutta()
+        return max(self.v_list)
 
     #def velocity_to_hit_target(self,mx,my,r):
     #    self.mx = mx
