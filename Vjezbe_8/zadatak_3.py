@@ -18,7 +18,7 @@ def ovisnost_dometa_o_koeficijentu_trenja_Cd():
         p.reset()
 
     plt.figure("Graf 1")
-    plt.plot(Cd_lista,D_lista, label = "Euler")
+    plt.plot(Cd_lista,D_lista, linewidth=3, label = "Euler")
     plt.plot(Cd_lista,D_rk_lista, c="red", label = "Runge-Kutta")
     plt.xlabel("Koeficijent trenja Cd")
     plt.ylabel("Domet [m]")
@@ -42,7 +42,7 @@ def ovisnost_dometa_o_masi():
         p.reset()
 
     plt.figure("Graf 1")
-    plt.plot(m_lista,D_lista, label = "Euler")
+    plt.plot(m_lista,D_lista, linewidth=3, label = "Euler")
     plt.plot(m_lista,D_rk_lista, c="red", label = "Runge-Kutta")
     plt.xlabel("Masa [kg]")
     plt.ylabel("Domet [m]")
