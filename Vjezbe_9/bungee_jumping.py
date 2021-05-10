@@ -6,6 +6,7 @@ class BungeeJumping:
         self.K_list = []
         self.U_list = []
         self.Eel_list = []
+        self.E_list = []
     
     def init(self,m,k,v0,h,l,ro,cd,A,dt):
         self.m = m
@@ -23,6 +24,7 @@ class BungeeJumping:
         self.K = 0
         self.U = m*self.g*h
         self.Eel = 0
+        self.E = self.K + self.U + self.Eel
         self.x_list.append(self.x)
         self.t_list.append(self.t)
         self.K_list.append(self.K)
@@ -47,6 +49,18 @@ class BungeeJumping:
         self.K_list = []
         self.U_list = []
         self.Eel_list = []
+
+    def __kin_en(self,v):
+        return (1/2)*self.m*(v**2)
+    
+    def __pot_en(self,x):
+        return self.m*self.g*x
+
+    def __el_en(self,x):
+        return (1/2)*self.k*(x**2)
+
+    def __energija(self,K,U,Eel):
+        return K + U + Eel
 
     def __dx(self,x):
         return abs(self.h - self.l - self.x)
@@ -75,6 +89,16 @@ class BungeeJumping:
         self.t += self.dt
         self.x_list.append(self.x)
         self.t_list.append(self.t)
+
+        self.K = self.__kin_en(self.v)
+        self.K_list.append(self.K)
+        self.U = self.__pot_en(dx)
+        self.U_list.append(self.U)
+        self.Eel = self.__el_en(dx)
+        self.Eel_list.append(self.Eel)
+
+        self.E = self.__energija(self.K, self.U, self.Eel)
+        self.E_list.append(self.E)
 
     def jump(self, t, oz = True):
         while self.t <= t:
