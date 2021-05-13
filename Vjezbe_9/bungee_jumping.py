@@ -24,12 +24,13 @@ class BungeeJumping:
         self.K = 0
         self.U = m*self.g*h
         self.Eel = 0
-        self.E = self.K + self.U + self.Eel
+        self.E = self.U
         self.x_list.append(self.x)
         self.t_list.append(self.t)
         self.K_list.append(self.K)
         self.U_list.append(self.U)
         self.Eel_list.append(self.Eel)
+        self.E_list.append(self.E)
 
     def reset(self):
         self.m = 0
@@ -49,9 +50,10 @@ class BungeeJumping:
         self.K_list = []
         self.U_list = []
         self.Eel_list = []
+        self.E_list = []
 
     def __kin_en(self,v):
-        return (1/2)*self.m*(v**2)
+        return (1/2)*self.m*v*v
     
     def __pot_en(self,x):
         return self.m*self.g*x
@@ -82,19 +84,20 @@ class BungeeJumping:
         if oz == False:
             if self.x < self.h - self.l:
                 self.a = -self.g
+                self.Eel = 0
             else:
                 self.a = self.__akcelracija(dx)
         else:
             self.a = self.__akcelracija_ar(dx,self.v)
+            self.Eel = self.__el_en(self.x)
         self.t += self.dt
         self.x_list.append(self.x)
         self.t_list.append(self.t)
 
         self.K = self.__kin_en(self.v)
         self.K_list.append(self.K)
-        self.U = self.__pot_en(dx)
+        self.U = self.__pot_en(self.x)
         self.U_list.append(self.U)
-        self.Eel = self.__el_en(dx)
         self.Eel_list.append(self.Eel)
 
         self.E = self.__energija(self.K, self.U, self.Eel)
