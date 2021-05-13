@@ -18,6 +18,7 @@ class BungeeJumping:
         self.x = h
         self.t = 0
         self.l = l
+        self.rp = h - l
         self.a = -self.g
         self.ro = ro
         self.cd = cd
@@ -59,7 +60,7 @@ class BungeeJumping:
         self.E_list = []
 
     def __dx(self,x):
-        return abs(self.h - self.l - self.x)
+        return abs(self.rp - self.x)
 
     def __akcelracija(self,x):
         return (-self.k/self.m)*x + self.g
@@ -88,7 +89,7 @@ class BungeeJumping:
         self.x += self.v*self.dt
         dx = self.__dx(self.x)
         if oz == False:
-            if self.x < self.h - self.l:
+            if self.x < self.rp:
                 self.a = -self.g
                 self.Eel = 0
             else:
