@@ -3,6 +3,8 @@ class BungeeJumping:
     def __init__(self):
         self.x_list = []
         self.t_list = []
+        self.v_list = []
+        self.a_list = []
         self.K_list = []
         self.U_list = []
         self.Eel_list = []
@@ -27,6 +29,8 @@ class BungeeJumping:
         self.E = self.U
         self.x_list.append(self.x)
         self.t_list.append(self.t)
+        self.v_list.append(self.v)
+        self.a_list.append(self.a)
         self.K_list.append(self.K)
         self.U_list.append(self.U)
         self.Eel_list.append(self.Eel)
@@ -47,22 +51,12 @@ class BungeeJumping:
         self.Eel = 0
         self.x_list = []
         self.t_list = []
+        self.v_list = []
+        self.a_list = []
         self.K_list = []
         self.U_list = []
         self.Eel_list = []
         self.E_list = []
-
-    def __kin_en(self,v):
-        return (1/2)*self.m*v*v
-    
-    def __pot_en(self,x):
-        return self.m*self.g*x
-
-    def __el_en(self,x):
-        return (1/2)*self.k*(x**2)
-
-    def __energija(self,K,U,Eel):
-        return K + U + Eel
 
     def __dx(self,x):
         return abs(self.h - self.l - self.x)
@@ -77,6 +71,18 @@ class BungeeJumping:
             a = (-self.k/self.m)*x + self.g + (self.v*self.v*self.ro*self.cd*self.A)/(2*self.m)
         return a
 
+    def __kin_en(self,v):
+        return (1/2)*self.m*v*v
+    
+    def __pot_en(self,x):
+        return self.m*self.g*x
+
+    def __el_en(self,x):
+        return (1/2)*self.k*x*x
+
+    def __energija(self,K,U,Eel):
+        return K + U + Eel
+
     def __jump(self, oz):      
         self.v += self.a*self.dt
         self.x += self.v*self.dt
@@ -87,12 +93,16 @@ class BungeeJumping:
                 self.Eel = 0
             else:
                 self.a = self.__akcelracija(dx)
+                self.Eel = self.__el_en(dx)
         else:
             self.a = self.__akcelracija_ar(dx,self.v)
-            self.Eel = self.__el_en(self.x)
+            self.Eel = self.__el_en(dx)
+        
         self.t += self.dt
         self.x_list.append(self.x)
         self.t_list.append(self.t)
+        self.v_list.append(self.v)
+        self.a_list.append(self.a)
 
         self.K = self.__kin_en(self.v)
         self.K_list.append(self.K)
