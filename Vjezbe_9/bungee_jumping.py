@@ -62,10 +62,17 @@ class BungeeJumping:
     def __dx(self,x):
         return abs(self.rp - self.x)
 
-    def __akcelracija(self,x):
+    def __akcelracija(self,x):   #ovo radi
         return (-self.k/self.m)*x + self.g
 
-    def __akcelracija_ar(self,x,v):
+    def __akceleracija_ar(self,v):
+        if v > 0:
+            a = self.g - (self.v*self.v*self.ro*self.cd*self.A)/(2*self.m)
+        else:
+            a = self.g + (self.v*self.v*self.ro*self.cd*self.A)/(2*self.m)
+        return a
+
+    def __akcelracija_ar_el(self,x,v):
         if v > 0:
             a = (-self.k/self.m)*x + self.g - (self.v*self.v*self.ro*self.cd*self.A)/(2*self.m)
         else:
@@ -89,15 +96,19 @@ class BungeeJumping:
         self.x += self.v*self.dt
         dx = self.__dx(self.x)
         if oz == False:
-            if self.x < self.rp:
+            if self.x < self.rp:   #ovo radi
                 self.a = -self.g
                 self.Eel = 0
             else:
                 self.a = self.__akcelracija(dx)
-                self.Eel = self.__el_en(dx)
+                self.Eel = self.__el_en(dx)        
         else:
-            self.a = self.__akcelracija_ar(dx,self.v)
-            self.Eel = self.__el_en(dx)
+            if self.x < self.rp:   #ovo radi
+                self.a = self.__akceleracija_ar(self.v)
+                self.Eel = 0
+            else:
+                self.a = self.__akcelracija_ar_el(dx, self.v)
+                self.Eel = self.__el_en(dx) 
         
         self.t += self.dt
         self.x_list.append(self.x)
