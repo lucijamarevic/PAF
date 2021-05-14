@@ -1,3 +1,5 @@
+import math
+
 class BungeeJumping:
     g = 9.81
     def __init__(self):
