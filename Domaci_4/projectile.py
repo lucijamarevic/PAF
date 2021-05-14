@@ -191,7 +191,8 @@ class Projectile:
             self.vx = self.v0*math.cos(self.kut)
             self.vy = self.v0*math.sin(self.kut)
             self.__runge_kutta()
-            D =  math.sqrt((self.mx-self.x)**2 + (self.my-self.y)**2) 
+            D =  math.sqrt((self.mx-self.x)**2 + (self.my-self.y)**2)
+
             if D <= self.r:
                 pogodena = True
                 break
