@@ -227,7 +227,7 @@ class Projectile:
             plt.plot(x,y)
 
             # dio koji crta putanju
-            self.init(self.m,self.v0,th,self.x0,self.y0,self.ro,self.cd,self.tijelo,self.a,self.dt)
+            self.init(self.m,self.v0,th,self.x0,self.y0,self.ro,self.cd,self.a,self.dt,self.tijelo)
             self.runge_kutta()
             self.plot_trajectory()
             self.reset()
@@ -254,7 +254,7 @@ class Projectile:
             plt.plot(x,y)
 
             # dio koji crta putanju
-            self.init(self.m,self.v0,theta,self.x0,self.y0,self.ro,self.cd,self.tijelo,self.a,self.dt)
+            self.init(self.m,self.v0,theta,self.x0,self.y0,self.ro,self.cd,self.a,self.dt,self.tijelo)
             self.runge_kutta()
             self.plot_trajectory()
             self.reset()
