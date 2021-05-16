@@ -116,12 +116,12 @@ class Projectile:
         return self.x_list,self.y_list
 
     def __runge_kutta(self):
-        # za x kommponentu
         if self.tijelo == "kocka":
             self.theta = abs(math.atan(self.vy/self.vx))
             self.A = self.a**2*(math.cos(self.theta) + math.sin(self.theta))
         else:
             self.A = (self.a**2)*math.pi
+        # za x kommponentu
         k1vx = self.__ax(self.vx,self.A)*self.dt 
         k1x = self.vx*self.dt
         k2vx = self.__ax(self.vx + k1vx/2,self.A)*self.dt
