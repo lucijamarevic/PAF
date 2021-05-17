@@ -9,6 +9,8 @@ b_lista.append(b)
 a_lista.append(np.array((2,4,6)))
 b_lista.append(np.array((1,3,5)))
 
+print(np.add(a,b))
+
 c_lista = []
 for i in range(2):
     c = np.dot(a_lista[i],b_lista[i])
