@@ -8,7 +8,7 @@ class EmField:
         self.y_lista = []
         self.z_lista = []
 
-    def init(self,m,q,r,v,E,B,dt):    #sve dobro
+    def init(self,m,q,r,v,E,B,dt):
         self.m = m
         self.q = q
         self.r = r
