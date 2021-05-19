@@ -39,18 +39,44 @@ class EmField:
     def __akceleracija(self,v):
         return (self.q/self.m) * (np.add(self.E,np.cross(v,self.B)))
 
-    def __move(self):
+    def __euler(self):
         self.v = np.add(self.v,self.a*self.dt)
         self.r = np.add(self.r,self.v*self.dt)
         self.a = self.__akceleracija(self.v)
         self.t += self.dt
     
-    def move(self,t):
+    def euler(self,t):
         while self.t <= t:
-            self.__move()
+            self.__euler()
             self.x_lista.append(self.r[0])
             self.y_lista.append(self.r[1])
             self.z_lista.append(self.r[2])
+
+        return self.x_lista, self.y_lista, self.z_lista
+
+    def __runge_kutta(self):
+        k1v = self.__akceleracija(self.v)*self.dt 
+        k1r = self.v*self.dt
+        k2v = self.__akceleracija(np.add(self.v,k1v/2))*self.dt
+        k2r = (np.add(self.v,k1v/2))*self.dt
+        k3v = self.__akceleracija(np.add(self.v,k2v/2))*self.dt
+        k3r = (np.add(self.v,k2v/2))*self.dt
+        k4v = self.__akceleracija(np.add(self.v,k3v))*self.dt
+        k4r = (np.add(self.v,k3v))*self.dt
+
+        self.v = np.add(self.v,(1/6)*np.add(np.add(k1v,2*k2v),np.add(2*k3v,k4v)))
+        self.r = np.add(self.r,(1/6)*np.add(np.add(k1r,2*k2r),np.add(2*k3r,k4r)))
+        self.a = self.__akceleracija(self.v)
+        self.t += self.dt
+
+    def runge_kutta(self,t):
+        while self.t <= t:
+            self.__runge_kutta()
+            self.x_lista.append(self.r[0])
+            self.y_lista.append(self.r[1])
+            self.z_lista.append(self.r[2])
+
+        return self.x_lista, self.y_lista, self.z_lista
 
     def plot_trajectory(self):
         ax = plt.axes(projection = "3d")
