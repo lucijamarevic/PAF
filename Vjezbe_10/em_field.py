@@ -1,7 +1,6 @@
-from mpl_toolkits import mplot3d
 import matplotlib.pyplot as plt
+from mpl_toolkits import mplot3d
 import numpy as np
-import math
 
 class EmField:
     def __init__(self):
