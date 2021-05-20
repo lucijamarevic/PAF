@@ -15,7 +15,7 @@ def vremenski_promjenjivo_polje(t):
     Bz = t/10
     return np.array((Bx,By,Bz))
 
-e = field.EmField()
+e = field.EmField() 
 #(m,q,r,v,E,dt,func)
 e.init(1,-1,np.array([0,0,0]),np.array([0.1,0.1,0.1]),np.array([0,0,0]),0.01,konstantno_polje)  
 x,y,z = e.runge_kutta(10)

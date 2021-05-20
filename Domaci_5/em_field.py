@@ -53,7 +53,7 @@ class EmField:
 
         return self.x_lista, self.y_lista, self.z_lista
 
-    def runge_kutta(self,t):
+    def runge_kutta(self,t): 
         while self.t <= t:
             self.B = self.func(self.t)
             k1v = self.__akceleracija(self.v,self.B)*self.dt 
