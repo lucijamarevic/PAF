@@ -5,7 +5,7 @@ import em_field as field
 
 def konstantno_polje(t):
     Bx = 0
-    By = 0
+    By = 0 
     Bz = 1
     return np.array((Bx,By,Bz))
 

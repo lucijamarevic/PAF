@@ -64,7 +64,7 @@ class EmField:
             k3r = (np.add(self.v,k2v/2))*self.dt
             k4v = self.__akceleracija(np.add(self.v,k3v),self.B)*self.dt
             k4r = (np.add(self.v,k3v))*self.dt
-
+ 
             self.v = np.add(self.v,(1/6)*np.add(np.add(k1v,2*k2v),np.add(2*k3v,k4v)))
             self.r = np.add(self.r,(1/6)*np.add(np.add(k1r,2*k2r),np.add(2*k3r,k4r)))
             self.a = self.__akceleracija(self.v,self.B)
