@@ -20,9 +20,7 @@ class EmField:
         self.dt = dt
         self.t = 0
         self.func = func
-        ti = self.t
-        self.B_ = func(ti)
-        self.B = np.array((0,0,self.B_))
+        self.B = func(self.t)
         self.a = self.__akceleracija(self.v,self.B)
 
     def reset(self):
@@ -46,8 +44,7 @@ class EmField:
         while self.t <= t:
             self.v = np.add(self.v,self.a*self.dt)
             self.r = np.add(self.r,self.v*self.dt)
-            self.B_ = self.func(self.t)
-            self.B = np.array((0,0,self.B_))
+            self.B = self.func(self.t)
             self.a = self.__akceleracija(self.v,self.B)
             self.t += self.dt
             self.x_lista.append(self.r[0])
@@ -58,9 +55,7 @@ class EmField:
 
     def runge_kutta(self,t):
         while self.t <= t:
-            ti = self.t
-            self.B_ = self.func(ti)
-            self.B = np.array((0,0,self.B_))
+            self.B = self.func(self.t)
             k1v = self.__akceleracija(self.v,self.B)*self.dt 
             k1r = self.v*self.dt
             k2v = self.__akceleracija(np.add(self.v,k1v/2),self.B)*self.dt

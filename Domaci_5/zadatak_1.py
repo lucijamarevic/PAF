@@ -4,10 +4,16 @@ import numpy as np
 import em_field as field
 
 def konstantno_polje(t):
-    return 1
+    Bx = 0
+    By = 0
+    Bz = 1
+    return np.array((Bx,By,Bz))
 
 def vremenski_promjenjivo_polje(t):
-    return t/10
+    Bx = 0
+    By = 0
+    Bz = t/10
+    return np.array((Bx,By,Bz))
 
 e = field.EmField()
 #(m,q,r,v,E,dt,func)
