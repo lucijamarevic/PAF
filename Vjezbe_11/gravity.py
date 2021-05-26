@@ -36,9 +36,6 @@ class Gravity:
         self.v2 = np.add(self.v2,self.a2*self.dt)
         self.r2 = np.add(self.r2,self.v2*self.dt)
 
-        #print(d1)
-        #print(d2)
-
     def interact(self,t):
         while self.t <= t:
             self.__interact()
