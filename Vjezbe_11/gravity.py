@@ -9,7 +9,7 @@ class Gravity:
         self.y2_list = []
 
     def init(self,m1,m2,r1,v1,r2,v2,dt = 60*6*24):
-        self.G =  6.67408 * 10**(-11)
+        self.G =  6.67408 * (10**(-11))
         self.m1 = m1
         self.m2 = m2
         self.r1 = r1
