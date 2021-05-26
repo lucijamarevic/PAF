@@ -36,6 +36,9 @@ class Gravity:
         self.v2 = np.add(self.v2,self.a2*self.dt)
         self.r2 = np.add(self.r2,self.v2*self.dt)
 
+        #print(d1)
+        #print(d2)
+
     def interact(self,t):
         while self.t <= t:
             self.__interact()
@@ -44,3 +47,5 @@ class Gravity:
             self.x2_list.append(self.r2[0])
             self.y2_list.append(self.r2[1])
             self.t += self.dt
+
+        return self.x1_list, self.y1_list, self.x2_list , self.y2_list

@@ -13,8 +13,9 @@ p = g.Gravity()
 
 #(m1,m2,r1,v1,r2,v2)
 p.init(ms,mz,rs,vs,rz,vz)
-p.interact(3650)
+p.interact(60*60*24*365.242)
 
+plt.figure("Gravitacijska interakcija", figsize=(7,7))
 plt.plot(p.x1_list,p.y1_list, c = "yellow", label = "Sunce")
 plt.plot(p.x2_list,p.y2_list, c = "blue", label = "Zemlja")
 plt.xlabel("x")
