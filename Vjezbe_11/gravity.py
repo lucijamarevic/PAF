@@ -8,7 +8,7 @@ class Gravity:
         self.x2_list = []
         self.y2_list = []
 
-    def init(self,m1,m2,r1,v1,r2,v2,dt = 0.01):
+    def init(self,m1,m2,r1,v1,r2,v2,dt = 60*6*24):
         self.G =  6.67408 * 10**(-11)
         self.m1 = m1
         self.m2 = m2
@@ -32,7 +32,7 @@ class Gravity:
         
         #za drugo tijelo
         d2 = math.sqrt((self.r2[0]-self.r1[0])**2 + (self.r2[1]-self.r1[1])**2)
-        self.a2 = -self.G * self.m2/(d2**3) * np.subtract(self.r2,self.r1)
+        self.a2 = -self.G * self.m1/(d2**3) * np.subtract(self.r2,self.r1)
         self.v2 = np.add(self.v2,self.a2*self.dt)
         self.r2 = np.add(self.r2,self.v2*self.dt)
 
