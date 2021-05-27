@@ -16,6 +16,8 @@ p.init(ms,mz,rs,vs,rz,vz)
 p.interact(60*60*24*365.242)
 
 plt.figure("Gravitacijska interakcija", figsize=(7,7))
+ax = plt.axes()
+ax.set_facecolor("black")
 plt.plot(p.x1_list,p.y1_list, c = "yellow", label = "Sunce")
 plt.plot(p.x2_list,p.y2_list, c = "blue", label = "Zemlja")
 plt.xlabel("x")
