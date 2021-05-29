@@ -16,11 +16,16 @@ class Gravity:
     def add_planet(self,planet):
         self.planeti.append(planet)
 
-    def __interact(self,m,v,r):
+    def __interact(self,m,v,r): #m2,r2,v2
         a = []
+        self.x = []
+        self.y = []
         self.m = m
         self.v = v
         self.r = r
+        """self.m2 = m2
+        self.r2 = r2
+        self.v2 = v2"""
 
         for p2 in self.planeti:
             self.m2 = p2[0]
@@ -39,6 +44,9 @@ class Gravity:
         self.v = np.add(self.v,self.a*self.dt)
         self.r = np.add(self.r,self.v*self.dt)
 
+        self.x.append(self.r[0])
+        self.y.append(self.r[1])
+
     def interact(self,t):
         for p in self.planeti:
             m = p[0]
@@ -48,5 +56,5 @@ class Gravity:
             del self.planeti[p]
 
             while self.t <= t:
-                self.__interact(m,v,r)
+                self.__interact(m,v,r) #dobijem x,y za taj planet
                 self.t += self.dt
