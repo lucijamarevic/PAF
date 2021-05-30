@@ -1,31 +1,35 @@
 import numpy as np
 import math
 
-class Planet:
-    def __init__(self,m,v,r):
-        lista = [m,v,r]
-        return lista
+class Planet: 
+    def __init__(self,m,v,r):     #radi 
+        self.list = [m,v,r]
 
-class Gravity:
-    def __init__(self,dt = 60*6*24):
+    def return_list(self):     #radi
+        return self.list
+
+class Universe:
+    def __init__(self,dt = 60*6*24):     #radi
         self.G =  6.67408 * (10**(-11))
         self.t = 0
         self.dt = dt
         self.planeti = []
+        self.x_list = []
+        self.y_list = []
 
-    def add_planet(self,planet):
+    def add_planet(self,planet):     #radi
         self.planeti.append(planet)
 
-    def __interact(self,m,v,r): #m2,r2,v2
+
+    #ode dalje je negdi greska
+
+    def __interact(self,m,v,r):
         a = []
         self.x = []
         self.y = []
         self.m = m
         self.v = v
         self.r = r
-        """self.m2 = m2
-        self.r2 = r2
-        self.v2 = v2"""
 
         for p2 in self.planeti:
             self.m2 = p2[0]
@@ -38,7 +42,7 @@ class Gravity:
             a.append(self.ai)
 
         self.a = 0
-        for i in range(0,len(a),2):
+        for i in range(0,len(a)-1,2):
                 self.a = np.add(self.a,np.add(a[i],a[i+1]))
 
         self.v = np.add(self.v,self.a*self.dt)
@@ -53,8 +57,10 @@ class Gravity:
             v = p[1]
             r = p[2]
             i = self.planeti.index(p)
-            del self.planeti[p]
+            del self.planeti[i]
 
             while self.t <= t:
-                self.__interact(m,v,r) #dobijem x,y za taj planet
+                self.__interact(m,v,r)
+                self.x_list.append(self.x)
+                self.y_list.append(self.y)
                 self.t += self.dt
