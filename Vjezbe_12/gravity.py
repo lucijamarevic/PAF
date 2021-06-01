@@ -22,17 +22,18 @@ class Universe:
 
     def __reset_1(self):
         self.m = 0
-        self.r = 0
-        self.v = 0
-        self.a = 0
-        self.t = 0
+        self.r = np.array((0,0))
+        self.v = np.array((0,0))
+        self.a = np.array((0,0))
+        self.F = np.array((0,0))
         self.x = []
         self.y = []
+        self.t = 0
 
     def __reset_2(self):
         self.m2 = 0
-        self.r2 = 0
-        self.v2 = 0
+        self.r2 = np.array((0,0))
+        self.v2 = np.array((0,0))
 
     #ode dalje je negdi greska
 
@@ -61,6 +62,7 @@ class Universe:
                 F = self.force(self.m,self.m2,self.r,self.r2)
                 
             self.F = np.add(self.F,F)
+            self.__reset_2()
         
         self.a = self.F/self.m
         self.v = np.add(self.v,self.a*self.dt)
@@ -77,7 +79,6 @@ class Universe:
 
             while self.t <= t:
                 self.__interact(m,v,r)
-                self.__reset_2()
                 self.t += self.dt
 
             self.x_list.append(self.x)
