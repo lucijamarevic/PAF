@@ -58,6 +58,9 @@ class Universe:
 
             while self.t <= t:
                 self.__interact(m,v,r)
-                self.x_list.append(self.x)
-                self.y_list.append(self.y)
                 self.t += self.dt
+
+            self.x_list.append(self.x)
+            self.y_list.append(self.y)
+            self.x.clear()
+            self.y.clear()
