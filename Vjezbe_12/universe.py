@@ -69,29 +69,18 @@ class Universe:
         self.r = np.add(self.r,self.v*self.dt)
 
     def interact(self,t):
-        with open("data.txt","w") as file:
-            for p in self.planeti:
-                m = p[0]
-                v = p[1]
-                r = p[2]
+        for p in self.planeti:
+            m = p[0]
+            v = p[1]
+            r = p[2]
 
-                while self.t <= t:
-                    self.__interact(m,v,r)
-                    self.x_list.append(self.r[0])
-                    self.y_list.append(self.r[1])
-                    self.t += self.dt
-                
-                for e in self.x_list:
-                    file.write(str(e))
-                    file.write(" ")
-                file.write("\n")
+            while self.t <= t:
+                self.__interact(m,v,r)
+                self.x_list.append(self.r[0])
+                self.y_list.append(self.r[1])
+                self.t += self.dt
 
-                for e in self.y_list:
-                    file.write(str(e))
-                    file.write(" ")
-                file.write("\n")
-
-                self.__reset_1()
+            self.__reset_1()
 
 
 ## u liste sprema stalno istu vrijednost, ko zna di je greska
