@@ -82,5 +82,4 @@ class Universe:
 
             self.__reset_1()
 
-
 ## u liste sprema stalno istu vrijednost, ko zna di je greska
