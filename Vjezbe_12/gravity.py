@@ -49,4 +49,4 @@ class Universe:
     def interact(self,t):
         while self.t <= t:
             self.__interact()
-            self.t += self.dt
+            self.t += self.dt 

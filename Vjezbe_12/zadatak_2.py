@@ -13,7 +13,7 @@ Venus = g.Planet("Venus","red",4.8685 * (10**24),np.array((0,35020)),np.array((0
 Earth = g.Planet("Earth","blue",5.9742 * (10**24),np.array((0,-29783)),np.array((-1*au,0)))
 Mars = g.Planet("Mars","brown",6.417 * (10**23),np.array((24007,0)),np.array((0,-1.667*au)))
 
-p = g.Universe()
+p = g.Universe() 
 p.add_planet(Sun)
 p.add_planet(Mercury)
 p.add_planet(Venus)
