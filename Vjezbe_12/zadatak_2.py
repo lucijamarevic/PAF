@@ -1,7 +1,8 @@
+from matplotlib import animation
 import gravity as g
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
+import matplotlib.animation as animation
 
 au = 1.486*(10**11)
 day = 60*60*24
@@ -23,11 +24,39 @@ p.add_planet(Mars)
 
 p.interact(5*year)
 
-plt.figure("Solar system", figsize = (8,8))
-plt.plot(Sun.x_list,Sun.y_list, c = Sun.color, label = Sun.name, linewidth = 2)
-plt.plot(Mercury.x_list,Mercury.y_list, c = Mercury.color, label = Mercury.name)
-plt.plot(Venus.x_list,Venus.y_list, c = Venus.color, label = Venus.name)
-plt.plot(Earth.x_list,Earth.y_list, c = Earth.color, label = Earth.name)
-plt.plot(Mars.x_list,Mars.y_list, c = Mars.color, label = Mars.name)
-plt.legend(loc = "upper right")
+fig = plt.figure()
+axis = plt.axes()
+
+line, = axis.plot([], []) 
+
+def init(): 
+    line.set_data([], []) 
+    return line, 
+   
+xdata, ydata = [], [] 
+ 
+def animate(i): 
+    t = 0.1 * i
+    for x in x_list:
+        xdata.append(x)
+    for y in y_list:
+        ydata.append(y) 
+    line.set_data(xdata, ydata) 
+      
+    return line,
+
+x_list = Earth.x_list
+y_list = Earth.y_list
+anim = animation.FuncAnimation(fig, animate, init_func = init, 
+                                frames = 500, interval = 20, blit = True) 
+
 plt.show()
+
+#plt.figure("Solar system", figsize = (8,8))
+#plt.plot(Sun.x_list,Sun.y_list, c = Sun.color, label = Sun.name, linewidth = 2)
+#plt.plot(Mercury.x_list,Mercury.y_list, c = Mercury.color, label = Mercury.name)
+#plt.plot(Venus.x_list,Venus.y_list, c = Venus.color, label = Venus.name)
+#plt.plot(Earth.x_list,Earth.y_list, c = Earth.color, label = Earth.name)
+#plt.plot(Mars.x_list,Mars.y_list, c = Mars.color, label = Mars.name)
+#plt.legend(loc = "upper right")
+#plt.show()
