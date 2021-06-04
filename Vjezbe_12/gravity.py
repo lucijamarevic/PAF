@@ -6,12 +6,18 @@ class Planet:
         self.name = name
         self.color = color
         self.m = m
+        self.v0 = v
         self.v = v
+        self.r0 = r
         self.r = r
         self.x_list = []
         self.y_list = []
         self.x_list.append(self.r[0])
         self.y_list.append(self.r[1])
+
+    def reset(self):
+        self.v = self.v0
+        self.r = self.r0
     
 class Universe:
     def __init__(self):
@@ -36,6 +42,9 @@ class Universe:
                     F = 0
                 else:
                     F = np.add(F,self.force(p.m,p2.m,p.r,p2.r))
+                    #p2.a = F/p2.m
+                    #p2.v = np.add(p2.v,p2.a*self.dt)
+                    #p2.r = np.add(p2.r,p2.v*self.dt)
             p.F = F
             p.a = p.F/p.m
             p.v = np.add(p.v,p.a * self.dt)
