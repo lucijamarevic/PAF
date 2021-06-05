@@ -1,4 +1,3 @@
-from matplotlib import animation
 import gravity as g
 import numpy as np
 import matplotlib.pyplot as plt

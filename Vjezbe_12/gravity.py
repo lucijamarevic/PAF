@@ -16,10 +16,6 @@ class Planet:
         self.y_list = []
         self.x_list.append(self.r[0])
         self.y_list.append(self.r[1])
-
-    def reset(self):
-        self.v = self.v0
-        self.r = self.r0
     
 class Universe:
     def __init__(self):
@@ -52,30 +48,3 @@ class Universe:
         while self.t <= t:
             self.__interact()
             self.t += self.dt 
-
-# ovo dalje ne valja
-class Animation:
-    def __init__(self,x_list,y_list,objects):
-        self.fig = plt.figure() 
-        axis = plt.axes() 
-  
-        self.line, = axis.plot([], []) 
-
-        self.x_list = x_list
-        self.y_list = y_list
-        self.objects = objects
-
-        self.xdata = []
-        self.ydata = []
-
-    def init(self): 
-        self.line.set_data([], []) 
-        return self.line,
-
-    def animate(self,i): 
-        t = 0.1 * i 
-        #self.xdata.append(x) 
-        #self.ydata.append(y) 
-        self.line.set_data(self.xdata, self.ydata) 
-        
-        return self.line,
