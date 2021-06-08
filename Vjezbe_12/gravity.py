@@ -2,7 +2,7 @@ import matplotlib.animation as animation
 import matplotlib.pyplot as plt
 import numpy as np
 import math
-
+ 
 class Planet: 
     def __init__(self,name,color,m,v,r): 
         self.name = name
