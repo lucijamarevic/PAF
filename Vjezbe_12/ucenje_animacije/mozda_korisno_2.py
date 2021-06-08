@@ -18,7 +18,6 @@ def init():
 fig, ax = plt.subplots()
 point, = ax.plot([0], [0], 'go')
 point.set_data(0, 0)
-ax.grid()
  
 def run(data):
  
