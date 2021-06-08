@@ -19,35 +19,31 @@ p.add_planet(Mercury)
 p.add_planet(Venus)
 p.add_planet(Earth)
 p.add_planet(Mars)
-#print(p.planets) sprema ih u listu kao objekte iz klase Planet
 
 p.interact(5*year)
 
-fig = plt.figure()
-axis = plt.axes()
+plt.style.use('dark_background')
 
-line, = axis.plot([], []) 
+fig = plt.figure() 
+ax = plt.axes() 
+line, = ax.plot([], [], lw=2) 
+
+xdata, ydata = [] , []
+
+def reset_data():
+    xdata.clear()
+    ydata.clear()
 
 def init(): 
-    line.set_data([], []) 
-    return line, 
-   
-xdata, ydata = [], [] 
- 
-def animate(i): 
-    t = 0.1 * i
-    for x in x_list:
-        xdata.append(x)
-    for y in y_list:
-        ydata.append(y) 
-    line.set_data(xdata, ydata) 
-      
-    return line,
+	line.set_data([], []) 
+	return line, 
 
-x_list = Earth.x_list
-y_list = Earth.y_list
-anim = animation.FuncAnimation(fig, animate, init_func = init, 
-                                frames = 500, interval = 20, blit = True) 
+def animate_Earth(i): 
+	line.set_data(Earth.x_list, Earth.y_list) 
+	return line, 
+
+anim = animation.FuncAnimation(fig, animate_Earth(), init_func=init, 
+							frames=500, interval=20, blit=True) 
 
 plt.show()
 
