@@ -23,15 +23,14 @@ p.add_planet(Earth)
 p.interact(5*year)
 
 plt.style.use('dark_background')
-#plt.figure("Solar system", figsize = (8,8))
+fig = plt.figure("Solar system", figsize = (8,8))
 #plt.plot(Sun.x_list,Sun.y_list, c = Sun.color, label = Sun.name, linewidth = 2)
 #plt.plot(Mercury.x_list,Mercury.y_list, c = Mercury.color, label = Mercury.name)
 #plt.plot(Venus.x_list,Venus.y_list, c = Venus.color, label = Venus.name)
 #plt.plot(Earth.x_list,Earth.y_list, c = Earth.color, label = Earth.name)
 #plt.plot(Mars.x_list,Mars.y_list, c = Mars.color, label = Mars.name)
 #plt.title('Inner Solar System') 
-
-fig = plt.figure() 
+ 
 axis = plt.axes() 
   
 line, = axis.plot([], [], lw = 2) 
@@ -39,13 +38,11 @@ line, = axis.plot([], [], lw = 2)
 def init(): 
     line.set_data([], []) 
     return line, 
-   
-xdata, ydata = [], [] 
 
 def animate(i): 
-    xdata.append(Earth.x_list[i]) 
-    ydata.append(Earth.y_list[i]) 
-    line.set_data(xdata, ydata) 
+    x = Earth.x_list[i] 
+    y = Earth.y_list[i]
+    line.set_data(x,y) 
       
     return line,
      

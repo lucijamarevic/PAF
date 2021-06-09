@@ -3,15 +3,12 @@ import numpy as np
 from matplotlib.animation import FuncAnimation 
 
 fig = plt.figure() 
-   
-# marking the x-axis and y-axis
+
 axis = plt.axes(xlim =(0, 4), 
                 ylim =(-2, 2)) 
   
-# initializing a line variable
 line, = axis.plot([], [], lw = 3) 
    
-# data which the line will contain (x, y)
 def init(): 
     line.set_data([], [])
     return line,
@@ -27,5 +24,3 @@ anim = FuncAnimation(fig, animate, init_func = init,
                      frames = 200, interval = 20, blit = True)
   
 plt.show()   
-#anim.save('continuousSineWave.mp4', 
-#          writer = 'ffmpeg', fps = 30)
