@@ -5,7 +5,7 @@ import matplotlib.animation as animation
 from math import sin,cos
  
          
-def data_gen():
+def data_gen(): 
     gen_list = ([cos(t),sin(t)] for t in np.arange(0,1000,0.1))
     return gen_list
  

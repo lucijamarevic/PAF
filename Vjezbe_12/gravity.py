@@ -8,9 +8,7 @@ class Planet:
         self.name = name
         self.color = color
         self.m = m
-        self.v0 = v
         self.v = v
-        self.r0 = r
         self.r = r
         self.x_list = []
         self.y_list = []
