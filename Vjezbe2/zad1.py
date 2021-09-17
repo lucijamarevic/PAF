@@ -43,4 +43,4 @@ def grafovi(F,m,v0,x0):
     plt.subplots_adjust(wspace = 0.4, hspace = 0.6, bottom = 0.1)
     plt.show()
 
-grafovi(10,0.1,10,0)
+grafovi(10,2.5,10,0)
